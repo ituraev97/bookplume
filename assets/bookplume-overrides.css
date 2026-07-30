@@ -67,3 +67,40 @@ body{background:#f8f6f1;color:#292722}
  #product-grid .card__heading{font-size:1.08rem!important}
  #product-grid .price{font-size:1.08rem!important}
 }
+
+/* Recommendations / related products — reuse premium card treatment */
+.related-products .grid.product-grid{align-items:start!important}
+.related-products__heading{font-size:clamp(2.4rem,2.6vw,3.2rem)!important;font-weight:400!important;letter-spacing:-.03em!important;margin-bottom:2rem!important}
+.related-products .card-wrapper .card{border:1px solid #e3ddd4!important;border-radius:1.2rem!important;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.related-products .card-wrapper .card:hover{transform:translateY(-3px);border-color:#cbbdaf!important;box-shadow:0 12px 28px rgba(45,39,32,.07)}
+.related-products .card__heading{font-weight:600!important;letter-spacing:0!important}
+.card-wrapper .rating-star{--color-rating-star:#ad5135!important}
+
+/* Product page */
+.product__title h1,.product__title .h1{font-family:var(--font-heading-family)!important;font-size:clamp(3rem,3.4vw,4.4rem)!important;line-height:1.05!important;letter-spacing:-.03em!important;font-weight:400!important}
+.product__info-container>*+*{margin-top:2rem!important}
+.product .price--large .price-item--regular{font-size:1.7rem!important;color:#918a80!important}
+.product .price--large .price-item--last{font-size:2.2rem!important;font-weight:700!important}
+.product .rating-star{--color-rating-star:#ad5135!important}
+.product .rating-text,.product .rating-count{color:#6f6961!important;font-size:1.3rem!important}
+.product__description.rte{font-size:1.5rem!important;line-height:1.75!important;color:#4a4640!important}
+.product-form__buttons .button{border-radius:.9rem!important;padding-top:1.5rem!important;padding-bottom:1.5rem!important;font-size:1.3rem!important;letter-spacing:.03em!important;text-transform:uppercase!important;font-weight:700!important;transition:transform .15s ease,opacity .15s ease}
+.product-form__buttons .button:hover{transform:translateY(-1px)}
+.product-form__buttons .button--primary{box-shadow:0 10px 24px rgba(169,79,53,.28)!important}
+.product__accordion .accordion__title{font-size:1.4rem!important;font-weight:600!important}
+.product__accordion summary{padding-top:1.6rem!important;padding-bottom:1.6rem!important}
+.product__media-wrapper .thumbnail{border-radius:.7rem!important;overflow:hidden}
+.product__media-wrapper .product__media{border-radius:1rem!important;overflow:hidden;background:#efebe4!important}
+@media screen and (max-width:749px){
+ .product__title h1,.product__title .h1{font-size:2.6rem!important}
+ .product-form__buttons .button{padding-top:1.35rem!important;padding-bottom:1.35rem!important}
+}
+
+/* Cart drawer */
+.cart-drawer .drawer__header{padding-top:2rem!important;padding-bottom:1.6rem!important}
+.cart-drawer .drawer__heading{font-family:var(--font-heading-family)!important;font-size:2.2rem!important;font-weight:400!important;letter-spacing:-.02em!important}
+.cart-drawer .cart-item{border-color:#e3ddd4!important}
+.cart-drawer .cart-item__name{font-weight:600!important;font-size:1.4rem!important}
+.cart-drawer .totals__total{font-size:1.5rem!important;font-weight:700!important}
+.cart-drawer .totals__total-value{font-size:1.7rem!important;font-weight:700!important}
+.cart-drawer .cart__checkout-button{border-radius:.9rem!important;padding-top:1.5rem!important;padding-bottom:1.5rem!important;font-size:1.3rem!important;letter-spacing:.03em!important;text-transform:uppercase!important;font-weight:700!important;box-shadow:0 10px 24px rgba(169,79,53,.28)!important}
