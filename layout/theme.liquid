@@ -22,11 +22,29 @@
       {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- liquid
+      assign meta_description = page_description
+      if meta_description == blank
+        case request.page_type
+          when 'product'
+            assign meta_description = product.description | strip_html | strip_newlines | truncate: 160
+          when 'collection'
+            assign meta_description = collection.description | strip_html | strip_newlines | truncate: 160
+          when 'article'
+            assign meta_description = article.excerpt_or_content | strip_html | strip_newlines | truncate: 160
+          when 'page'
+            assign meta_description = page.content | strip_html | strip_newlines | truncate: 160
+        endcase
+      endif
+      if meta_description == blank
+        assign meta_description = shop.description
+      endif
+    -%}
+    {% if meta_description != blank %}
+      <meta name="description" content="{{ meta_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', page_description: meta_description %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>

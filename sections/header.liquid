@@ -426,24 +426,35 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 
+{%- liquid
+  assign social_links = settings.social_twitter_link
+    | append: ',' | append: settings.social_facebook_link
+    | append: ',' | append: settings.social_pinterest_link
+    | append: ',' | append: settings.social_instagram_link
+    | append: ',' | append: settings.social_tiktok_link
+    | append: ',' | append: settings.social_tumblr_link
+    | append: ',' | append: settings.social_snapchat_link
+    | append: ',' | append: settings.social_youtube_link
+    | append: ',' | append: settings.social_vimeo_link
+    | split: ','
+-%}
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
     "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
+      {%- assign first_social_link = true -%}
+      {%- for social_link in social_links -%}
+        {%- if social_link != blank -%}
+          {%- unless first_social_link %},{% endunless -%}
+          {{ social_link | json }}
+          {%- assign first_social_link = false -%}
+        {%- endif -%}
+      {%- endfor -%}
     ],
     "url": {{ request.origin | append: page.url | json }}
   }
@@ -453,7 +464,7 @@
   {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "WebSite",
       "name": {{ shop.name | json }},
       "potentialAction": {
