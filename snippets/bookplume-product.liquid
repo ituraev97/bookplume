@@ -1,4 +1,4 @@
-<article class="bp-product">
+<article class="bp-product"{% if reveal %} data-reveal{% endif %}>
   <a href="{{ product.url }}">
     <div class="bp-cover">
       {% if product.compare_at_price > product.price %}<span class="bp-badge">SALE</span>{% endif %}

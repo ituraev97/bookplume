@@ -1,11 +1,65 @@
-/* Book Plume — safe additive overrides. Dawn remains intact. */
-body{background:#f8f6f1;color:#292722}
-.header-wrapper{background:#f8f6f1!important;border-bottom:1px solid #ded8ce!important}
-.header{max-width:142rem!important;padding-top:13px!important;padding-bottom:13px!important}
+/* Book Plume — global design system. Dawn remains intact underneath. */
+:root{
+ --bp-ink:#1c1a17;--bp-ink-soft:#4a4640;--bp-muted:#78716a;
+ --bp-paper:#f8f6f1;--bp-paper-deep:#f0ece4;--bp-card:#fffefa;
+ --bp-line:#e3ddd4;--bp-line-soft:#ede8e0;
+ --bp-terra:#ad5135;--bp-terra-deep:#8f4029;--bp-dark:#15140f;
+ --bp-radius-s:.6rem;--bp-radius-m:1.2rem;--bp-radius-l:2rem;
+ --bp-shadow-s:0 8px 20px rgba(28,26,23,.06);
+ --bp-shadow-m:0 20px 48px rgba(28,26,23,.1);
+ --bp-shadow-l:0 40px 90px rgba(28,26,23,.16);
+ --bp-ease:cubic-bezier(.16,1,.3,1);
+ --bp-duration-s:.3s;--bp-duration-m:.6s;--bp-duration-l:.9s;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bp-paper)!important;color:var(--bp-ink)}
+::selection{background:var(--bp-terra);color:#fff}
+:focus-visible{outline:2px solid var(--bp-terra)!important;outline-offset:2px}
+
+/* Scroll-reveal system — see bookplume-motion.js */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity var(--bp-duration-m) var(--bp-ease),transform var(--bp-duration-m) var(--bp-ease);transition-delay:var(--bp-reveal-delay,0ms);will-change:opacity,transform}
+[data-reveal].is-revealed{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+}
+
+/* Announcement bar */
+.utility-bar{min-height:4rem!important}
+.announcement-bar{min-height:4rem}
+.announcement-bar__message{font-size:1.1rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.announcement-bar__link{text-underline-offset:3px}
+
+/* Header — compact premium sticky bar with scroll state (toggled by bookplume-motion.js) */
+.header-wrapper{background:rgba(248,246,241,.92)!important;border-bottom:1px solid transparent!important;backdrop-filter:blur(0px);transition:background-color var(--bp-duration-s) ease,border-color var(--bp-duration-s) ease,backdrop-filter var(--bp-duration-s) ease,box-shadow var(--bp-duration-s) ease}
+.header-wrapper.bp-scrolled{background:rgba(248,246,241,.88)!important;border-bottom-color:var(--bp-line)!important;backdrop-filter:blur(18px) saturate(140%);box-shadow:var(--bp-shadow-s)}
+.header{max-width:142rem!important;padding-top:15px!important;padding-bottom:15px!important;transition:padding var(--bp-duration-s) ease}
+.bp-scrolled .header{padding-top:10px!important;padding-bottom:10px!important}
+.header__heading-link{transition:opacity .2s ease}
+.header__heading-link:hover{opacity:.72}
 .header__heading-link .h2{font-size:0!important}
-.header__heading-link .h2::after{content:'Book Plume';display:block;font-family:var(--font-heading-family);font-size:2.9rem;font-weight:400;letter-spacing:-.035em;color:#292722}
-.header__menu-item{font-size:1.3rem;letter-spacing:.01em}
-.announcement-bar__message{font-size:1.1rem;font-weight:700;letter-spacing:.055em;text-transform:uppercase}
+.header__heading-link .h2::after{content:'Book Plume';display:block;font-family:var(--font-heading-family);font-size:2.7rem;line-height:1;font-weight:400;letter-spacing:-.03em;color:var(--bp-ink);transition:font-size var(--bp-duration-s) ease}
+.bp-scrolled .header__heading-link .h2::after{font-size:2.3rem}
+
+/* Navigation — single line, animated underline */
+.header__inline-menu{margin-left:1.4rem}
+.header__inline-menu>.list-menu--inline{flex-wrap:nowrap}
+.header__inline-menu>.list-menu--inline>li>.header__menu-item{font-size:1.25rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap;position:relative}
+.header__inline-menu>.list-menu--inline>li>.header__menu-item::after{content:'';position:absolute;left:1.2rem;right:1.2rem;bottom:.9rem;height:1px;background:var(--bp-terra);transform:scaleX(0);transform-origin:center;transition:transform var(--bp-duration-s) var(--bp-ease)}
+.header__inline-menu>.list-menu--inline>li>.header__menu-item:hover{color:var(--bp-terra)}
+.header__inline-menu>.list-menu--inline>li>.header__menu-item:hover::after{transform:scaleX(1)}
+.header__inline-menu>.list-menu--inline>li>.header__menu-item:hover span{text-decoration:none}
+.header__icons{gap:.2rem}
+.header__icon:hover .icon,.header__icon:hover .svg-wrapper{color:var(--bp-terra)}
+
+/* Search — Dawn's icon-triggered predictive overlay, restyled on-brand */
+.search-modal{background:rgba(21,20,15,.4)!important}
+.search-modal__content{background:var(--bp-paper)!important;border-bottom:1px solid var(--bp-line)!important}
+.search__input{font-family:var(--font-heading-family)!important;font-size:2.1rem!important;letter-spacing:-.01em!important}
+.predictive-search,.predictive-search--header{background:var(--bp-paper)!important;border-color:var(--bp-line)!important}
+.predictive-search__heading{font-size:1.1rem!important;letter-spacing:.08em!important;text-transform:uppercase;color:var(--bp-muted)!important}
+.predictive-search__item-heading{font-weight:600!important}
+.predictive-search__item:hover,.predictive-search__item[aria-selected='true']{background:var(--bp-paper-deep)!important}
 
 .collection-hero{background:#f8f6f1!important}
 .collection-hero__inner{padding-top:4.5rem!important;padding-bottom:2.6rem!important}
