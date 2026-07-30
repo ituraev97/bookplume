@@ -1,0 +1,78 @@
+{{ 'bookplume-2026.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign rail_collection = section.settings.collection
+  if rail_collection == blank or rail_collection.products.size == 0
+    assign rail_collection = collections['bestsellers']
+  endif
+  if rail_collection == blank or rail_collection.products.size == 0
+    assign rail_collection = collections['all']
+  endif
+-%}
+
+{%- if rail_collection != blank and rail_collection.products.size > 0 -%}
+  <section class="bp2 bp2-rail-section">
+    <div class="bp2-wrap">
+      <div class="bp2-rail-head" data-reveal>
+        <div>
+          <div class="bp2-eyebrow">{{ section.settings.eyebrow }}</div>
+          <h2>{{ section.settings.heading }}</h2>
+        </div>
+        <a class="bp2-rail-link" href="{{ rail_collection.url }}">Shop all →</a>
+      </div>
+      <div class="bp2-rail" data-rail>
+        <button type="button" class="bp2-rail-nav bp2-rail-nav--prev" data-rail-prev aria-label="Scroll to previous books">‹</button>
+        <div class="bp2-rail-track" data-rail-track data-reveal-group>
+          {%- for product in rail_collection.products limit: section.settings.products_to_show -%}
+            <div class="bp2-rail-item" data-rail-item>
+              {% render 'bookplume-product-showcase', product: product, reveal: true %}
+            </div>
+          {%- endfor -%}
+        </div>
+        <button type="button" class="bp2-rail-nav bp2-rail-nav--next" data-rail-next aria-label="Scroll to more books">›</button>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Book Plume — Bestsellers 2026",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Bestsellers"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Books readers are choosing"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Falls back to Bestsellers, then All products."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Plume — Bestsellers 2026"
+    }
+  ]
+}
+{% endschema %}

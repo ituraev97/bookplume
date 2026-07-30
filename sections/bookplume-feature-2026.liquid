@@ -1,0 +1,78 @@
+{{ 'bookplume-2026.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign feature_product = section.settings.product
+  if feature_product == blank
+    assign fallback_collection = section.settings.fallback_collection
+    if fallback_collection == blank
+      assign fallback_collection = collections['bestsellers']
+    endif
+    if fallback_collection == blank or fallback_collection.products.size == 0
+      assign fallback_collection = collections['all']
+    endif
+    assign feature_product = fallback_collection.products[3] | default: fallback_collection.products.first
+  endif
+-%}
+
+{%- if feature_product != blank -%}
+  <section class="bp2 bp2-feature">
+    <div class="bp2-wrap">
+      <div class="bp2-eyebrow" data-reveal>{{ section.settings.eyebrow }}</div>
+      <h2 data-reveal style="--bp-reveal-delay:80ms">{{ section.settings.heading }}</h2>
+      <a class="bp2-feature-visual" href="{{ feature_product.url }}" data-reveal style="--bp-reveal-delay:160ms">
+        {%- if feature_product.featured_image -%}
+          {{
+            feature_product.featured_image
+            | image_url: width: 900
+            | image_tag: loading: 'lazy', widths: '450,650,900', alt: feature_product.featured_image.alt | default: feature_product.title
+          }}
+        {%- endif -%}
+      </a>
+      <a class="bp2-feature-link" href="{{ feature_product.url }}">{{ section.settings.link_text }} →</a>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Book Plume — Feature moment",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "One book"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Worth getting lost in."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Discover the book"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Featured product",
+      "info": "Leave blank to pick one automatically from the fallback collection."
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Fallback collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Book Plume — Feature moment"
+    }
+  ]
+}
+{% endschema %}

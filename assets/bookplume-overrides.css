@@ -22,7 +22,11 @@ body{background:var(--bp-paper)!important;color:var(--bp-ink)}
 [data-reveal].is-revealed{opacity:1;transform:translateY(0)}
 @media (prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
- [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+ /* Disable animated motion only — each element's own .is-revealed rule
+    (added immediately by JS under reduced motion) still supplies the
+    correct resting transform, e.g. rotated hero covers. */
+ [data-reveal]{transition:none!important}
+ [data-reveal]:not(.is-revealed){opacity:1!important;transform:none!important}
 }
 
 /* Announcement bar */
