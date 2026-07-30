@@ -1,0 +1,10 @@
+<article class="bp-product"{% if reveal %} data-reveal{% endif %}>
+  <a href="{{ product.url }}">
+    <div class="bp-cover">
+      {% if product.compare_at_price > product.price %}<span class="bp-badge">SALE</span>{% endif %}
+      {% if product.featured_image %}{{ product.featured_image | image_url: width: 520 | image_tag: loading: 'lazy', widths: '220,320,420,520', alt: product.featured_image.alt | default: product.title }}{% else %}{{ 'product-1' | placeholder_svg_tag }}{% endif %}
+    </div>
+    <h3>{{ product.title }}</h3>
+    <div class="bp-price">{{ product.price | money }}{% if product.compare_at_price > product.price %}<span class="bp-compare">{{ product.compare_at_price | money }}</span>{% endif %}</div>
+  </a>
+</article>

@@ -17,20 +17,12 @@ body{background:var(--bp-paper)!important;color:var(--bp-ink)}
 ::selection{background:var(--bp-accent);color:#fff}
 :focus-visible{outline:2px solid var(--bp-accent)!important;outline-offset:2px}
 
-/* Scroll-reveal system — see bookplume-motion.js
-   IMPORTANT: [data-reveal] elements are visible by default. The hidden
-   "about to enter" state is only ever applied under html.bp-reveal-ready,
-   a class bookplume-motion.js adds itself right before it starts
-   observing. If the script fails to load, throws, or is blocked, this
-   class never appears and every [data-reveal] element simply stays at
-   its normal, fully visible state — content must never depend on JS to
-   be visible. */
-[data-reveal]{transition:opacity var(--bp-duration-m) var(--bp-ease),transform var(--bp-duration-m) var(--bp-ease);transition-delay:var(--bp-reveal-delay,0ms)}
-html.bp-reveal-ready [data-reveal]{opacity:0;transform:translateY(28px);will-change:opacity,transform}
-html.bp-reveal-ready [data-reveal].is-revealed{opacity:1;transform:translateY(0)}
+/* Scroll-reveal system — see bookplume-motion.js */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity var(--bp-duration-m) var(--bp-ease),transform var(--bp-duration-m) var(--bp-ease);transition-delay:var(--bp-reveal-delay,0ms);will-change:opacity,transform}
+[data-reveal].is-revealed{opacity:1;transform:translateY(0)}
 @media (prefers-reduced-motion:reduce){
  html{scroll-behavior:auto}
- [data-reveal]{transition:none!important}
+ [data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
 }
 
 /* Announcement bar */
