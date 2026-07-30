@@ -1,0 +1,52 @@
+/* Book Plume — safe additive overrides. Do not replace Dawn base.css. */
+body{background:#f8f6f1;color:#292722}
+.header-wrapper{background:#f8f6f1!important;border-bottom:1px solid #ded8ce!important}
+.header{max-width:142rem!important;padding-top:13px!important;padding-bottom:13px!important}
+.header__heading-link .h2{font-size:0!important}
+.header__heading-link .h2::after{content:'Book Plume';display:block;font-family:var(--font-heading-family);font-size:2.9rem;font-weight:400;letter-spacing:-.035em;color:#292722}
+.header__menu-item{font-size:1.3rem;letter-spacing:.01em}
+.announcement-bar__message{font-size:1.1rem;font-weight:700;letter-spacing:.055em;text-transform:uppercase}
+
+/* collection header */
+.collection-hero{background:#f8f6f1!important}
+.collection-hero__inner{padding-top:4.5rem!important;padding-bottom:2.6rem!important}
+.collection-hero__title{font-size:clamp(4rem,4vw,5.8rem)!important;line-height:1!important;letter-spacing:-.04em!important;font-weight:400!important;margin-bottom:1.8rem!important}
+.collection-hero__description{max-width:82rem!important;font-size:1.45rem!important;line-height:1.65!important;color:#6f6961!important}
+.collection-hero__description p{margin:0!important}
+
+/* filters */
+.facets-container{padding-top:1.5rem!important;padding-bottom:2rem!important;border-bottom:1px solid #ded8ce}
+.facets__heading,.facets__summary,.facet-filters__label,.facet-filters__sort,.product-count__text{font-size:1.2rem!important}
+
+/* collection grid: compact premium cards */
+#product-grid{gap:2.6rem 1.6rem!important;margin-top:2.4rem!important}
+#product-grid .grid__item{min-width:0}
+#product-grid .card-wrapper{height:100%}
+#product-grid .card{height:100%;background:#fffefa!important;border:1px solid #e3ddd4!important;border-radius:1.2rem!important;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+#product-grid .card:hover{transform:translateY(-3px);border-color:#cbbdaf!important;box-shadow:0 12px 28px rgba(45,39,32,.07)}
+#product-grid .card__inner{background:#efebe4!important}
+#product-grid .card__media{margin:0!important;width:100%!important}
+#product-grid .card__media .media img{object-fit:contain!important;padding:1.3rem!important}
+#product-grid .card__content{padding:1.15rem 1.25rem 1.3rem!important}
+#product-grid .card__information{padding:0!important}
+#product-grid .card__heading{font-family:var(--font-body-family)!important;font-size:1.27rem!important;line-height:1.38!important;font-weight:600!important;letter-spacing:0!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3.5rem}
+#product-grid .card-information{margin-top:.55rem!important}
+#product-grid .price{font-size:1.25rem!important;font-weight:700!important;letter-spacing:0!important}
+#product-grid .price-item--regular{font-size:1.08rem!important;color:#918a80!important}
+#product-grid .badge{font-size:.9rem!important;font-weight:700!important;letter-spacing:.05em!important;text-transform:uppercase;border:0!important;border-radius:999px!important;background:#ad5135!important;color:#fff!important;padding:.5rem .8rem!important}
+
+@media screen and (min-width:990px){
+  #product-grid.grid--4-col-desktop,#product-grid.grid--3-col-desktop{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important}
+  #product-grid.grid--4-col-desktop .grid__item,#product-grid.grid--3-col-desktop .grid__item{width:100%!important;max-width:100%!important}
+}
+@media screen and (max-width:749px){
+  .header__heading-link .h2::after{font-size:2.3rem}
+  .collection-hero__inner{padding-top:3rem!important;padding-bottom:1.8rem!important}
+  .collection-hero__title{font-size:3.8rem!important}
+  .collection-hero__description{font-size:1.3rem!important}
+  #product-grid{gap:1.6rem 1rem!important}
+  #product-grid .card__media .media img{padding:.8rem!important}
+  #product-grid .card__content{padding:1rem!important}
+  #product-grid .card__heading{font-size:1.15rem!important;min-height:3.2rem}
+  #product-grid .price{font-size:1.15rem!important}
+}
