@@ -1,0 +1,105 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "image_height": "adapt"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": false
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
+        },
+        "products_intro": {
+          "type": "products_intro",
+          "settings": {
+            "heading": "Our top anatomy atlas picks",
+            "subheading": ""
+          }
+        },
+        "product_pick_1": {
+          "type": "product_pick",
+          "settings": {
+            "product": null,
+            "note": ""
+          }
+        },
+        "product_pick_2": {
+          "type": "product_pick",
+          "settings": {
+            "product": null,
+            "note": ""
+          }
+        },
+        "product_pick_3": {
+          "type": "product_pick",
+          "settings": {
+            "product": null,
+            "note": ""
+          }
+        },
+        "product_pick_4": {
+          "type": "product_pick",
+          "settings": {
+            "product": null,
+            "note": ""
+          }
+        },
+        "collection_cta": {
+          "type": "collection_cta",
+          "settings": {
+            "collection": null,
+            "heading": "Browse the full Anatomy & Medical collection",
+            "label": "Shop Anatomy & Medical"
+          }
+        },
+        "related_reading_1": {
+          "type": "related_reading",
+          "settings": {
+            "article": null,
+            "label": "You might also like"
+          }
+        },
+        "related_reading_2": {
+          "type": "related_reading",
+          "settings": {
+            "article": null,
+            "label": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "title",
+        "content",
+        "products_intro",
+        "product_pick_1",
+        "product_pick_2",
+        "product_pick_3",
+        "product_pick_4",
+        "collection_cta",
+        "related_reading_1",
+        "related_reading_2",
+        "share"
+      ],
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
