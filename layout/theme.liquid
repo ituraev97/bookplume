@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
+    <meta name="google-site-verification" content="IdC_5CjNQtdZZKCTG6jtP-Q3AwtCkUCz7OIaco1wRPQ" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -368,9 +369,9 @@
         itemRemoved: `{{ 'sections.quick_order_list.items_removed.one' | t: quantity: '[quantity]' }}`,
         viewCart: `{{- 'sections.quick_order_list.view_cart' | t -}}`,
         each: `{{- 'sections.quick_order_list.each' | t: money: '[money]' }}`,
-        min_error: `{{- 'sections.quick_order_list.min_error' | t: min: '[min]' }}`,
-        max_error: `{{- 'sections.quick_order_list.max_error' | t: max: '[max]' }}`,
-        step_error: `{{- 'sections.quick_order_list.step_error' | t: step: '[step]' }}`,
+        min_error: `{{ 'sections.quick_order_list.min_error' | t: min: '[min]' }}`,
+        max_error: `{{ 'sections.quick_order_list.max_error' | t: max: '[max]' }}`,
+        step_error: `{{ 'sections.quick_order_list.step_error' | t: step: '[step]' }}`,
       };
 
       window.accessibilityStrings = {
@@ -380,7 +381,7 @@
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
         recipientFormExpanded: `{{ 'recipient.form.expanded' | t }}`,
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
-        countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
+        countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: count }}`,
       };
     </script>
 
